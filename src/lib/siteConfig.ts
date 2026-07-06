@@ -8,6 +8,9 @@ export const DEFAULT_OG_IMAGE =
 
 export const TWITTER_SITE = '@animemiru_media'
 
+/** Google Analytics 4（現行 animemiru.jp と同じ G-4CP0HT6FZX） */
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-4CP0HT6FZX'
+
 export const ORGANIZATION = {
   name: SITE_NAME,
   url: 'https://animemiru.jp',

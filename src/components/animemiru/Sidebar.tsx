@@ -15,58 +15,6 @@ export function AnimemiruSidebar({ popularPosts = [] }: Props) {
     <div id="side">
       <aside>
         <div className="side-topad">
-          <div className="ad">
-            <p className="st-widgets-title">
-              <span>SNSをフォローして最新情報をチェック！</span>
-            </p>
-            <ul className="lsi-social-icons icon-set-lsi_widget-2" style={{ textAlign: 'left' }}>
-              <li className="lsi-social-youtube">
-                <a
-                  aria-label="YouTube"
-                  href="https://www.youtube.com/channel/UCCGMUAzlpKk9LyJxv7dUSWQ"
-                  rel="nofollow noopener noreferrer"
-                  target="_blank"
-                  title="YouTube"
-                >
-                  <i className="lsicon lsicon-youtube" />
-                </a>
-              </li>
-              <li className="lsi-social-instagram">
-                <a
-                  aria-label="Instagram"
-                  href="https://www.instagram.com/animemiru/"
-                  rel="nofollow noopener noreferrer"
-                  target="_blank"
-                  title="Instagram"
-                >
-                  <i className="lsicon lsicon-instagram" />
-                </a>
-              </li>
-              <li className="lsi-social-twitter">
-                <a
-                  aria-label="Twitter"
-                  href="https://twitter.com/animemiru_media"
-                  rel="nofollow noopener noreferrer"
-                  target="_blank"
-                  title="Twitter"
-                >
-                  <i className="lsicon lsicon-twitter" />
-                </a>
-              </li>
-              <li className="lsi-social-facebook">
-                <a
-                  aria-label="Facebook"
-                  href="http://facebook.com/animemiru"
-                  rel="nofollow noopener noreferrer"
-                  target="_blank"
-                  title="Facebook"
-                >
-                  <i className="lsicon lsicon-facebook" />
-                </a>
-              </li>
-            </ul>
-          </div>
-
           <SidebarBanners />
 
           <div className="ad">
