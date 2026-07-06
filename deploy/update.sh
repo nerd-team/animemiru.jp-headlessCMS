@@ -9,7 +9,7 @@ echo "==> git pull"
 git pull origin main
 
 echo "==> docker compose build & up"
-docker compose up -d --build
+sudo docker compose up -d --build
 
 echo "==> 完了"
-docker compose ps
+sudo docker compose ps
