@@ -50,12 +50,14 @@ import { getPostCanonicalUrl } from '@/utilities/getPostCanonicalUrl'
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
 
 import { getServerSideURL } from '@/utilities/getURL'
+import { shouldSkipBuildStaticGeneration } from '@/utilities/shouldSkipBuildStaticGeneration'
 
 import type { Post } from '@/payload-types'
 
 
 
 export async function generateStaticParams() {
+  if (shouldSkipBuildStaticGeneration()) return []
 
   const payload = await getPayload({ config: configPromise })
 

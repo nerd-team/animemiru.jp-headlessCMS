@@ -7,6 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
+        PAYLOAD_SECRET: ${PAYLOAD_SECRET:-build-time-docker-secret-minimum-32-chars}
         NEXT_PUBLIC_SERVER_URL: ${NEXT_PUBLIC_SERVER_URL:-https://animemiru.jp}
         NEXT_PUBLIC_OG_IMAGE: ${NEXT_PUBLIC_OG_IMAGE:-https://animemiru.jp/wp-content/img/ogp_top.jpg}
         NEXT_PUBLIC_ADSENSE_CLIENT: ${NEXT_PUBLIC_ADSENSE_CLIENT:-}
