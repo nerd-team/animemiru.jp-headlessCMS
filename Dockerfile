@@ -13,7 +13,7 @@ WORKDIR /app
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci --legacy-peer-deps; \
+  elif [ -f package-lock.json ]; then npm ci --legacy-peer-deps --ignore-scripts; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
@@ -41,6 +41,8 @@ ENV NEXT_PUBLIC_DYSHORTS_ID=$NEXT_PUBLIC_DYSHORTS_ID
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN npm run generate:importmap
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
