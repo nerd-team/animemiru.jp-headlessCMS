@@ -24,15 +24,34 @@ function parseArg(name: string, fallback: string) {
   return match?.split('=')[1] ?? fallback
 }
 
-function isPortOpen(port: number) {
+function isPortOpen(host: string, port: number) {
   return new Promise<boolean>((resolve) => {
-    const socket = net.createConnection({ host: '127.0.0.1', port })
+    const socket = net.createConnection({ host, port })
     socket.once('connect', () => {
       socket.end()
       resolve(true)
     })
     socket.once('error', () => resolve(false))
   })
+}
+
+async function ensureDatabase() {
+  if (process.env.DATABASE_URL) {
+    console.log('[migrate] Using DATABASE_URL from environment')
+    return
+  }
+
+  if (await isPortOpen('127.0.0.1', 27017)) {
+    process.env.DATABASE_URL = 'mongodb://127.0.0.1:27017/animemiru'
+    console.log('[migrate] Using local MongoDB on 127.0.0.1:27017')
+    return
+  }
+
+  console.log('[migrate] Starting temporary MongoDB...')
+  const memoryServer = await MongoMemoryServer.create()
+  process.env.DATABASE_URL = memoryServer.getUri('animemiru')
+  console.log(`[migrate] DATABASE_URL=${process.env.DATABASE_URL}`)
+  console.log('[migrate] Note: dev server uses a separate DB unless MongoDB is running on port 27017')
 }
 
 async function main() {
@@ -42,13 +61,7 @@ async function main() {
   const downloadImages = !process.argv.includes('--no-images')
   const dryRun = process.argv.includes('--dry-run')
 
-  if (!(await isPortOpen(27017))) {
-    console.log('[migrate] Starting temporary MongoDB...')
-    const memoryServer = await MongoMemoryServer.create()
-    process.env.DATABASE_URL = memoryServer.getUri('animemiru')
-    console.log(`[migrate] DATABASE_URL=${process.env.DATABASE_URL}`)
-    console.log('[migrate] Note: dev server uses a separate DB unless MongoDB is running on port 27017')
-  }
+  await ensureDatabase()
 
   console.log(`[migrate] WP_URL=${process.env.WP_URL || 'https://animemiru.jp'}`)
   console.log(`[migrate] limit=${limit} page=${startPage} images=${downloadImages} dryRun=${dryRun}`)
