@@ -47,6 +47,21 @@
   }
 }
 
+#gazou-wide {
+  margin-bottom: 0;
+}
+
+.header-post-slider-container {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+@media print, screen and (min-width: 960px) {
+  #gazou-wide {
+    padding: 0 0 20px;
+  }
+}
+
 header .sitename {
   max-width: 200px;
 }
