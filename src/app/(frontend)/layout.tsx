@@ -41,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           title="アニメミル RSS"
           type="application/rss+xml"
         />
+        <link href="/llms.txt" rel="alternate" title="LLMs" type="text/plain" />
       </head>
       <body className="home blog front-page">
         <GoogleAnalytics />
@@ -86,5 +87,8 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  verification: {
+    google: 'CNzgWAi0gl8Gum5Z6OufF7l_P0niV7w7Q92VWHzs2xY',
   },
 }

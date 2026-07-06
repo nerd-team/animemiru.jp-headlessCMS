@@ -6,6 +6,8 @@ import Link from 'next/link'
 
 import { draftMode } from 'next/headers'
 
+import { permanentRedirect } from 'next/navigation'
+
 import { cache } from 'react'
 
 import { getPayload, type Where } from 'payload'
@@ -46,7 +48,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 
 import { formatArticleDate } from '@/utilities/formatDateTime'
 
-import { getPostCanonicalUrl } from '@/utilities/getPostCanonicalUrl'
+import { getPostCanonicalUrl, getPostPath } from '@/utilities/getPostCanonicalUrl'
 import { getCategoryHref } from '@/utilities/categorySlug'
 
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
@@ -123,6 +125,12 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 
 
 
+  if (!draft && post.wpId && decodedSlug !== String(post.wpId)) {
+    permanentRedirect(getPostPath(post))
+  }
+
+
+
   const category = post.categories?.[0]
 
   const categoryTitle =
@@ -183,6 +191,7 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
       <ViewTracker postId={post.id} />
 
       <ArticleJsonLd
+        articleSection={categoryTitle}
         author={authorProfile}
         description={post.excerpt}
         imageUrl={imageUrl}

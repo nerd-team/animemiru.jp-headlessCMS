@@ -29,13 +29,14 @@ function JsonLdScript({ data }: { data: Record<string, unknown> }) {
 }
 
 export function ArticleJsonLd({
+  articleSection,
   author,
   description,
   imageUrl,
   modifiedAt,
   post,
   url,
-}: ArticleJsonLdProps) {
+}: ArticleJsonLdProps & { articleSection?: string | null }) {
   const authorProfile = author || DEFAULT_AUTHOR_PROFILE
   const authorUrl = `${getServerSideURL()}/articles/author/${authorProfile.slug}`
 
@@ -45,6 +46,9 @@ export function ArticleJsonLd({
     headline: post.title,
     description: description || undefined,
     image: imageUrl ? [imageUrl] : undefined,
+    url,
+    inLanguage: 'ja',
+    articleSection: articleSection || undefined,
     datePublished: post.publishedAt || undefined,
     dateModified: modifiedAt || post.publishedAt || undefined,
     mainEntityOfPage: {

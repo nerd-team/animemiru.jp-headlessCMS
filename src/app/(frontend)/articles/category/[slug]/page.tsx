@@ -12,7 +12,7 @@ import { fetchCategoryBySlug } from '@/lib/fetchCategoryBySlug'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
 import { getCategoryDescription } from '@/lib/articleSeo'
 import { getCategoryHref } from '@/utilities/categorySlug'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { buildPaginatedMetadata, parsePageParam } from '@/utilities/paginationMeta'
 import { getServerSideURL } from '@/utilities/getURL'
 
 const POSTS_PER_PAGE = 18
@@ -79,20 +79,25 @@ export default async function CategoryPage({ params, searchParams }: Args) {
   )
 }
 
-export async function generateMetadata({ params }: Args): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Args): Promise<Metadata> {
   const { slug } = await params
+  const { page: pageParam } = await searchParams
+  const page = parsePageParam(pageParam)
   const category = await fetchCategoryBySlug(slug)
 
   if (!category) return { title: 'カテゴリが見つかりません' }
 
-  const url = `${getServerSideURL()}${getCategoryHref(category.slug)}`
+  const basePath = getCategoryHref(category.slug)
   const title = category.title
   const description = getCategoryDescription(category.title, category.description)
+  const siteUrl = getServerSideURL()
 
-  return {
-    title,
+  return buildPaginatedMetadata({
+    basePath,
     description,
-    alternates: { canonical: url },
-    openGraph: mergeOpenGraph({ title: `${title} | アニメミル`, description, url }),
-  }
+    openGraphTitle: `${title} | アニメミル`,
+    page,
+    siteUrl,
+    title: page > 1 ? `${title}（${page}ページ目）` : title,
+  })
 }

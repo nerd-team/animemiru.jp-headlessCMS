@@ -11,17 +11,26 @@ import { YouTubeShortsWidget } from '@/components/animemiru/SidebarWidgets'
 import { Pagination } from '@/components/Pagination'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
 import { SITE_DESCRIPTION, SITE_TAGLINE } from '@/lib/siteConfig'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { buildPaginatedMetadata, parsePageParam } from '@/utilities/paginationMeta'
 import { getServerSideURL } from '@/utilities/getURL'
 
-export const metadata: Metadata = {
-  title: SITE_TAGLINE,
-  description: SITE_DESCRIPTION,
-  alternates: { canonical: getServerSideURL() },
-  openGraph: mergeOpenGraph({
-    title: SITE_TAGLINE,
-    url: getServerSideURL(),
-  }),
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}): Promise<Metadata> {
+  const { page: pageParam } = await searchParams
+  const page = parsePageParam(pageParam)
+  const siteUrl = getServerSideURL()
+
+  return buildPaginatedMetadata({
+    basePath: '/',
+    description: SITE_DESCRIPTION,
+    openGraphTitle: `${SITE_TAGLINE} | アニメミル`,
+    page,
+    siteUrl,
+    title: page > 1 ? `${SITE_TAGLINE}（${page}ページ目）` : SITE_TAGLINE,
+  })
 }
 
 const POSTS_PER_PAGE = 18

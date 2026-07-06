@@ -20,5 +20,20 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: true,
   }
 
-  return [internetExplorerRedirect, legacyPostRedirect]
+  const legacyFeedRedirects = [
+    { source: '/feed', destination: '/feed.xml', permanent: true },
+    { source: '/feed/', destination: '/feed.xml', permanent: true },
+  ]
+
+  const legacyHomePaginationRedirects = [
+    { source: '/page/:page', destination: '/?page=:page', permanent: true },
+    { source: '/page/:page/', destination: '/?page=:page', permanent: true },
+  ]
+
+  return [
+    internetExplorerRedirect,
+    legacyPostRedirect,
+    ...legacyFeedRedirects,
+    ...legacyHomePaginationRedirects,
+  ]
 }

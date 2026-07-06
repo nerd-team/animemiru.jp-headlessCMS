@@ -6,7 +6,7 @@ import { ArchivePage } from '@/components/animemiru/ArchivePage'
 import { toBreadcrumbJsonLd } from '@/components/animemiru/Breadcrumbs'
 import { BreadcrumbJsonLd } from '@/components/animemiru/JsonLd'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { buildPaginatedMetadata, parsePageParam } from '@/utilities/paginationMeta'
 import { getServerSideURL } from '@/utilities/getURL'
 
 const POSTS_PER_PAGE = 18
@@ -77,18 +77,28 @@ export default async function SearchPage({ searchParams }: Args) {
 }
 
 export function generateMetadata({ searchParams }: Args): Promise<Metadata> {
-  return searchParams.then(({ q, s }) => {
+  return searchParams.then(({ page: pageParam, q, s }) => {
     const query = (s || q || '').trim()
+    const page = parsePageParam(pageParam)
     const title = query ? `「${query}」の検索結果` : '記事検索'
-    const url = query
-      ? `${getServerSideURL()}/search?s=${encodeURIComponent(query)}`
-      : `${getServerSideURL()}/search`
+    const siteUrl = getServerSideURL()
 
-    return {
-      title,
-      alternates: { canonical: url },
-      openGraph: mergeOpenGraph({ title: `${title} | アニメミル`, url }),
-      robots: query ? { index: false, follow: true } : undefined,
+    if (query) {
+      return {
+        title,
+        alternates: {
+          canonical: `${siteUrl}/search?s=${encodeURIComponent(query)}`,
+        },
+        robots: { index: false, follow: true },
+      }
     }
+
+    return buildPaginatedMetadata({
+      basePath: '/search',
+      page,
+      siteUrl,
+      title: page > 1 ? `${title}（${page}ページ目）` : title,
+      openGraphTitle: `${title} | アニメミル`,
+    })
   })
 }

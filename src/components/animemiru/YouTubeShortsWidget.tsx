@@ -6,7 +6,7 @@ import {
 } from '@/lib/youtubeShorts'
 
 export async function YouTubeShortsWidget() {
-  const videoIds = await fetchYoutubeShortIds(4)
+  const videoIds = await fetchYoutubeShortIds(6)
 
   return (
     <div className="ad youtube-shorts-widget">

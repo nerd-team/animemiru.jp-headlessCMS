@@ -42,6 +42,12 @@ export const generateMeta = async (args: {
       : DEFAULT_OG_IMAGE,
   )
 
+  const publishedTime = isPost && post?.publishedAt ? post.publishedAt : undefined
+  const modifiedTime =
+    isPost && (post?.modifiedAt || post?.updatedAt)
+      ? post.modifiedAt || post.updatedAt
+      : undefined
+
   return {
     title,
     description,
@@ -54,6 +60,12 @@ export const generateMeta = async (args: {
       images: [{ url: ogImage, alt: pageTitle }],
       title,
       url,
+      ...(isPost && publishedTime
+        ? {
+            publishedTime,
+            modifiedTime,
+          }
+        : {}),
     }),
     twitter: {
       card: 'summary_large_image',

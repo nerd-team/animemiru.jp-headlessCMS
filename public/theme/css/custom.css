@@ -628,18 +628,39 @@ html {
 
 .youtube-shorts-list {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-direction: row;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 4px;
+  padding: 4px 4px 12px;
+  margin: 0 -4px;
+}
+
+.youtube-shorts-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.youtube-shorts-list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+.youtube-shorts-list::-webkit-scrollbar-thumb:hover {
+  background: #f7b52c;
 }
 
 .youtube-short-item {
   position: relative;
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
+  flex: 0 0 auto;
+  width: 168px;
+  scroll-snap-align: start;
   aspect-ratio: 9 / 16;
-  max-height: 420px;
   background: #000;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .youtube-short-item iframe {
