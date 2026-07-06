@@ -1,0 +1,22 @@
+/* Payload 管理画面を WordPress 風に調整 */
+.collection-edit--posts {
+  [data-field-name='title'] input {
+    font-size: 1.6em;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 12px 14px;
+  }
+
+  [data-field-name='excerpt'] textarea {
+    min-height: 100px;
+  }
+
+  .field-type.code .monaco-editor,
+  .field-type.code .code-editor {
+    min-height: 480px;
+  }
+}
+
+.collection-list--posts .cell-title {
+  font-weight: 600;
+}

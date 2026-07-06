@@ -1,0 +1,435 @@
+#headbox-bg,
+#footer {
+  background: #f7b52c;
+}
+
+/* PC 2カラム（本番 st-kanricss.php 相当） */
+@media print, screen and (min-width: 960px) {
+  #headbox,
+  #gazou-wide,
+  #content,
+  #content-w,
+  #footer-in,
+  .footermenubox-in {
+    max-width: 1060px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #contentInner {
+    float: left;
+    width: 100%;
+    margin-right: -300px;
+  }
+
+  #contentInner main {
+    margin-right: 320px;
+    margin-left: 0;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 30px 50px;
+  }
+
+  #side {
+    display: block;
+  }
+
+  #side aside {
+    float: right;
+    width: 300px;
+    padding: 0;
+  }
+
+  #content.clearfix::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+header .sitename {
+  max-width: 200px;
+}
+
+header .sitename a:hover {
+  opacity: 1 !important;
+}
+
+.sp {
+  display: none;
+}
+
+.wpp-list {
+  counter-reset: wpp-ranking;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 10px 0 14px;
+}
+
+.wpp-list li {
+  position: relative;
+  list-style-type: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  min-height: auto;
+}
+
+.wpp-list li::before {
+  content: counter(wpp-ranking, decimal);
+  counter-increment: wpp-ranking;
+  background: #f7b52c;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  padding: 4px 8px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.wpp-list li .wpp-meta {
+  display: none;
+}
+
+.wpp-list li .wpp-item-thumb {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #f0f0f0;
+}
+
+.wpp-list li .wpp-item-thumb a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wpp-list li img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+}
+
+.wpp-list li .wpp-item-body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.copyr {
+  text-align: center;
+  font-size: 12px;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.tagcloud a {
+  display: inline-block;
+  margin: 0 5px 5px 0;
+  padding: 2px 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.tagcloud a:hover {
+  background: #f7b52c;
+  border-color: #f7b52c;
+  color: #fff;
+}
+
+.footermenubox {
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.footermenubox-in {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.footermenu ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footermenu a {
+  font-size: 13px;
+}
+
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.entry-content table th,
+.entry-content table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.entry-content h2,
+.entry-content h3,
+.entry-content h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.entry-content .wp-block-image {
+  margin: 1.5em 0;
+}
+
+.kanren.pop-box {
+  margin-top: 30px;
+}
+
+.kanren.pop-box .p-entry-t {
+  margin-bottom: 15px;
+}
+
+.kanren.pop-box h5.kanren-t {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.kanren.pop-box dt.poprank img {
+  width: 160px;
+  height: auto;
+}
+
+.sns.st-sns-bottom {
+  margin-top: 20px;
+}
+
+.sidebar-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sidebar-ad-box {
+  background: #f5f5f5;
+  border: 1px dashed #ccc;
+  color: #999;
+  font-size: 12px;
+  padding: 40px 10px;
+  text-align: center;
+}
+
+.widget.popular-posts .wpp-post-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.kanren dt img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.kanren .st-excerpt {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #666;
+}
+
+.dyshorts-placeholder,
+.dyshorts-widget {
+  margin: 20px 0;
+}
+
+.sitemap-section {
+  margin-bottom: 2em;
+}
+
+.sitemap-section h2 {
+  font-size: 18px;
+  margin-bottom: 0.75em;
+}
+
+.sitemap-section ul {
+  list-style: disc;
+  margin-left: 1.5em;
+}
+
+.sitemap-section li {
+  margin-bottom: 0.4em;
+}
+
+.contact-form {
+  margin-top: 1em;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
+.contact-form .wpforms-field {
+  margin-bottom: 1.2em;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.contact-form .wpforms-submit {
+  background: #f7b52c;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+.contact-form-message {
+  margin-top: 1em;
+}
+
+.contact-form-message--success {
+  color: #2e7d32;
+}
+
+.contact-form-message--error {
+  color: #c62828;
+}
+
+.st-author-box {
+  margin-top: 30px;
+}
+
+.st-author-box #st-tab-menu {
+  border-bottom: 2px solid #f7b52c;
+  list-style: none;
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+.st-author-box #st-tab-menu li {
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px 0;
+}
+
+.st-author-box #st-tab-box dl {
+  display: flex;
+  gap: 16px;
+}
+
+.st-author-box #st-tab-box dt img {
+  border-radius: 50%;
+}
+
+.st-author-box .author-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+.st-author-box .author-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.st-author-box .author-sns,
+.author-page-box .author-sns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.st-author-box .author-sns a,
+.author-page-box .author-sns a {
+  font-size: 12px;
+}
+
+.article-summary-box {
+  background: #fffef5;
+  border: 1px solid #f7b52c;
+  border-radius: 4px;
+  margin: 20px 0;
+  padding: 16px 18px;
+}
+
+.article-summary-heading {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.article-summary-list {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.article-summary-list li {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+.archive-description {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.author-page-box dl {
+  display: flex;
+  gap: 20px;
+}
+
+.author-page-box .author-job {
+  color: #888;
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.author-back {
+  margin-top: 24px;
+}

@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env
+deploy/certs/*.pem
+!deploy/certs/.gitkeep
+media/
+public/media/
+*.log
+.DS_Store
