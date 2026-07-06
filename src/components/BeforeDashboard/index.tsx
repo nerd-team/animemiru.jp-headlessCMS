@@ -1,4 +1,5 @@
 import { Banner } from '@payloadcms/ui/elements/Banner'
+import Link from 'next/link'
 import React from 'react'
 
 import './index.scss'
@@ -14,7 +15,7 @@ const BeforeDashboard: React.FC = () => {
       <ul className={`${baseClass}__instructions`}>
         <li>
           <strong>記事の作成・編集:</strong>{' '}
-          <a href="/admin/collections/posts">記事一覧</a>
+          <Link href="/admin/collections/posts">記事一覧</Link>
           {' → 右上「新規作成」'}
         </li>
         <li>
