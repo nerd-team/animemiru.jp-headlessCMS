@@ -31,9 +31,12 @@ export function categorySlugLookupValues(slugParam: string): string[] {
 
   try {
     add(encodeURIComponent(normalized))
+    add(encodeURIComponent(normalized).toLowerCase())
   } catch {
     // noop
   }
+
+  add(slugParam.toLowerCase())
 
   return [...values]
 }
