@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/siteConfig'
 import { getSiteUrl } from '@/lib/getSiteUrl'
+import { getCategoryHref } from '@/utilities/categorySlug'
 
 export const dynamic = 'force-dynamic'
 
@@ -19,7 +20,7 @@ export async function GET() {
   })
 
   const categoryLines = categories.docs
-    .map((c) => `- ${c.title}: ${siteUrl}/articles/category/${c.slug}`)
+    .map((c) => `- ${c.title}: ${siteUrl}${getCategoryHref(c.slug)}`)
     .join('\n')
 
   const body = `# ${SITE_NAME}

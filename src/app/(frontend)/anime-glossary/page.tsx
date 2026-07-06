@@ -11,6 +11,7 @@ import { POPULAR_TAGS } from '@/lib/popularTags'
 import { SITE_DESCRIPTION } from '@/lib/siteConfig'
 import { generateStaticPageMeta } from '@/utilities/generateStaticPageMeta'
 import { getServerSideURL } from '@/utilities/getURL'
+import { getCategoryHref } from '@/utilities/categorySlug'
 
 export const metadata: Metadata = generateStaticPageMeta(
   'アニメ用語・タグ一覧',
@@ -23,7 +24,7 @@ export default async function AnimeGlossaryPage() {
   const [categories, popularPosts] = await Promise.all([
     payload.find({
       collection: 'categories',
-      limit: 100,
+      limit: 1000,
       pagination: false,
       sort: 'title',
     }),
@@ -64,7 +65,7 @@ export default async function AnimeGlossaryPage() {
             <ul>
               {categories.docs.map((category) => (
                 <li key={category.id}>
-                  <Link href={`/articles/category/${category.slug}`}>{category.title}</Link>
+                  <Link href={getCategoryHref(category.slug)}>{category.title}</Link>
                 </li>
               ))}
             </ul>

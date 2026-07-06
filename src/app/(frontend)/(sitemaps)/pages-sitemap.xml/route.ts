@@ -4,6 +4,7 @@ import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
 import { getSiteUrl } from '@/lib/getSiteUrl'
+import { getCategoryHref } from '@/utilities/categorySlug'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,6 +21,7 @@ const getPagesSitemap = unstable_cache(
       { loc: `${siteUrl}/terms`, lastmod: dateFallback },
       { loc: `${siteUrl}/contact`, lastmod: dateFallback },
       { loc: `${siteUrl}/anime-glossary`, lastmod: dateFallback },
+      { loc: `${siteUrl}/articles/category`, lastmod: dateFallback },
       { loc: `${siteUrl}/articles/author/editor`, lastmod: dateFallback },
     ]
 
@@ -31,7 +33,7 @@ const getPagesSitemap = unstable_cache(
     })
 
     const categoryPages = categories.docs.map((category) => ({
-      loc: `${siteUrl}/articles/category/${category.slug}`,
+      loc: `${siteUrl}${getCategoryHref(category.slug)}`,
       lastmod: category.updatedAt || dateFallback,
     }))
 

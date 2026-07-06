@@ -47,6 +47,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { formatArticleDate } from '@/utilities/formatDateTime'
 
 import { getPostCanonicalUrl } from '@/utilities/getPostCanonicalUrl'
+import { getCategoryHref } from '@/utilities/categorySlug'
 
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
 
@@ -165,7 +166,7 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 
     ...(categoryTitle && categorySlug
 
-      ? [{ name: categoryTitle, href: `/articles/category/${categorySlug}` }]
+      ? [{ name: categoryTitle, href: getCategoryHref(categorySlug) }]
 
       : []),
 
@@ -228,7 +229,7 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 
                       <Link
 
-                        href={`/articles/category/${categorySlug}`}
+                        href={getCategoryHref(categorySlug)}
 
                         rel="category tag"
 

@@ -614,6 +614,35 @@ html {
   margin-bottom: 0.75em;
 }
 
+.category-index {
+  margin: 24px 0 40px;
+}
+
+.category-index-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category-index-list a {
+  display: block;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  text-decoration: none;
+}
+
+.category-index-list a:hover {
+  background: #f7b52c;
+  border-color: #e5a318;
+  color: #fff;
+}
+
 .sitemap-section ul {
   list-style: disc;
   margin-left: 1.5em;

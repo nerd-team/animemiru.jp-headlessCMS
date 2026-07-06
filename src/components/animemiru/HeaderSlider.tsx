@@ -2,6 +2,7 @@ import type { Post } from '@/payload-types'
 import Link from 'next/link'
 import { formatDateTime } from '@/utilities/formatDateTime'
 import { getPostHref } from '@/utilities/getPostHref'
+import { getCategoryHref } from '@/utilities/categorySlug'
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
 import { truncateExcerpt } from '@/utilities/truncateExcerpt'
 
@@ -57,7 +58,7 @@ export function HeaderSlider({ posts }: Props) {
                         <div className="post-slide-text">
                           {categoryTitle && categorySlug && (
                             <p className="st-catgroup itiran-category">
-                              <Link href={`/articles/category/${categorySlug}`} rel="category tag">
+                              <Link href={getCategoryHref(categorySlug)} rel="category tag">
                                 <span className="catname">{categoryTitle}</span>
                               </Link>
                             </p>

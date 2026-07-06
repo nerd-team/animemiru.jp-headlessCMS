@@ -6,6 +6,7 @@ import { getPayload } from 'payload'
 
 import { sanitizeHtml } from '@/lib/sanitizeHtml'
 import { enrichContentHtml } from '@/lib/enrichContentHtml'
+import { normalizeCategorySlug } from '@/utilities/categorySlug'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '../..')
@@ -119,7 +120,7 @@ async function ensureCategory(
 ) {
   if (cache.has(wpCat.id)) return cache.get(wpCat.id)!
 
-  const slug = (wpCat.slug || '').trim() || categorySlug(wpCat.id)
+  const slug = normalizeCategorySlug(wpCat.slug || '') || categorySlug(wpCat.id)
   const found = await payload.find({
     collection: 'categories',
     where: { slug: { equals: slug } },

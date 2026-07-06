@@ -6,6 +6,7 @@ import { ADSENSE_INFEED_INTERVAL, InFeedAdUnit } from '@/components/animemiru/Ad
 import { isAdSenseEnabled } from '@/lib/adsenseConfig'
 import { formatDateTime } from '@/utilities/formatDateTime'
 import { getPostHref } from '@/utilities/getPostHref'
+import { getCategoryHref } from '@/utilities/categorySlug'
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
 
 type Props = {
@@ -52,7 +53,7 @@ export function RelatedPosts({ posts, title = '関連記事' }: Props) {
               <dd>
                 {categoryTitle && categorySlug && (
                   <p className="st-catgroup itiran-category">
-                    <Link href={`/articles/category/${categorySlug}`} rel="category tag">
+                    <Link href={getCategoryHref(categorySlug)} rel="category tag">
                       <span className="catname">{categoryTitle}</span>
                     </Link>
                   </p>

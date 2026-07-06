@@ -7,6 +7,7 @@ import { StaticPageLayout } from '@/components/animemiru/StaticPageLayout'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
 import { generateStaticPageMeta } from '@/utilities/generateStaticPageMeta'
 import { getPostHref } from '@/utilities/getPostHref'
+import { getCategoryHref } from '@/utilities/categorySlug'
 
 export const metadata: Metadata = generateStaticPageMeta(
   'サイトマップ',
@@ -20,7 +21,7 @@ export default async function SitemapPage() {
   const [categories, posts, popularPosts] = await Promise.all([
     payload.find({
       collection: 'categories',
-      limit: 100,
+      limit: 1000,
       pagination: false,
       sort: 'title',
     }),
@@ -58,7 +59,7 @@ export default async function SitemapPage() {
             <Link href="/search">記事検索</Link>
           </li>
           <li>
-            <Link href="/anime-glossary">アニメ用語・タグ一覧</Link>
+            <Link href="/articles/category">カテゴリ一覧</Link>
           </li>
           <li>
             <Link href="/feed.xml">RSS フィード</Link>
@@ -72,7 +73,7 @@ export default async function SitemapPage() {
           <ul>
             {categories.docs.map((category) => (
               <li key={category.id}>
-                <Link href={`/articles/category/${category.slug}`}>{category.title}</Link>
+                <Link href={getCategoryHref(category.slug)}>{category.title}</Link>
               </li>
             ))}
           </ul>
