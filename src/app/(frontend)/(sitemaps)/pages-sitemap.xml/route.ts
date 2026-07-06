@@ -5,6 +5,8 @@ import { unstable_cache } from 'next/cache'
 
 import { getSiteUrl } from '@/lib/getSiteUrl'
 
+export const dynamic = 'force-dynamic'
+
 const getPagesSitemap = unstable_cache(
   async () => {
     const payload = await getPayload({ config })

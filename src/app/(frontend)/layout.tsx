@@ -14,6 +14,9 @@ import {
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { getServerSideURL } from '@/utilities/getURL'
 
+// MongoDB 未起動の Docker ビルド時に静的プリレンダーで DB 接続しないよう動的化
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" suppressHydrationWarning>

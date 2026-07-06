@@ -4,6 +4,8 @@ import { getPayload } from 'payload'
 import { getPostPath } from '@/utilities/getPostCanonicalUrl'
 import { getSiteUrl } from '@/lib/getSiteUrl'
 
+export const dynamic = 'force-dynamic'
+
 function escapeXml(text: string): string {
   return text
     .replace(/&/g, '&amp;')

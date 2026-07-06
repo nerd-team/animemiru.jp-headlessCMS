@@ -4,6 +4,8 @@ import { getPayload } from 'payload'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/siteConfig'
 import { getSiteUrl } from '@/lib/getSiteUrl'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   const payload = await getPayload({ config })
   const siteUrl = getSiteUrl()

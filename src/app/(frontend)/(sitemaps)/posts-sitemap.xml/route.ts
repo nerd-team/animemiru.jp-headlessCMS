@@ -6,6 +6,8 @@ import { unstable_cache } from 'next/cache'
 import { getSiteUrl } from '@/lib/getSiteUrl'
 import { getPostPath } from '@/utilities/getPostCanonicalUrl'
 
+export const dynamic = 'force-dynamic'
+
 const getPostsSitemap = unstable_cache(
   async () => {
     const payload = await getPayload({ config })

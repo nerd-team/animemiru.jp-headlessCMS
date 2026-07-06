@@ -11,12 +11,14 @@ import { fetchAuthorBySlug } from '@/lib/fetchAuthorBySlug'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
 import { generateStaticPageMeta } from '@/utilities/generateStaticPageMeta'
 import { getServerSideURL } from '@/utilities/getURL'
+import { shouldSkipBuildStaticGeneration } from '@/utilities/shouldSkipBuildStaticGeneration'
 
 type Args = {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
+  if (shouldSkipBuildStaticGeneration()) return []
   return [{ slug: 'editor' }]
 }
 
