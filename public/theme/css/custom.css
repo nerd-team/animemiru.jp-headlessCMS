@@ -459,11 +459,79 @@ header .sitename a:hover {
   padding: 8px;
 }
 
-.entry-content h2,
-.entry-content h3,
-.entry-content h4 {
-  margin-top: 1.5em;
-  margin-bottom: 0.75em;
+/* 記事本文見出し（旧WP affinger5 相当） */
+.post .entry-content h2:not(.st-css-no2),
+.post .entry-content .h2modoki {
+  background: #f3f3f3;
+  color: #1a1a1a;
+  margin: 20px 0;
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 20px;
+  line-height: 27px;
+  font-weight: bold;
+}
+
+.post .entry-content h3:not(.st-css-no2):not(.rankh3):not(#reply-title),
+.post .entry-content .h3modoki {
+  background: #f3f3f3;
+  color: #1a1a1a;
+  margin: 20px 0;
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 19px;
+  line-height: 27px;
+  font-weight: bold;
+}
+
+.post .entry-content h4:not(.st-css-no2):not(.point):not(.rankh4),
+.post .entry-content .h4modoki {
+  padding: 10px 15px;
+  margin: 20px 0;
+  background-color: #f3f3f3;
+  font-size: 17px;
+  line-height: 26px;
+  font-weight: bold;
+}
+
+.post .entry-content h2 span[id],
+.post .entry-content h3 span[id],
+.post .entry-content h4 span[id] {
+  scroll-margin-top: 80px;
+}
+
+@media only screen and (min-width: 600px) {
+  .post .entry-content h2:not(.st-css-no2),
+  .post .entry-content .h2modoki {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .post .entry-content h3:not(.st-css-no2):not(.rankh3):not(#reply-title),
+  .post .entry-content .h3modoki {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
+@media print, screen and (min-width: 960px) {
+  .post .entry-content h2:not(.st-css-no2),
+  .post .entry-content .h2modoki {
+    font-size: 24px;
+    line-height: 35px;
+  }
+
+  .post .entry-content h3:not(.st-css-no2):not(.rankh3):not(#reply-title),
+  .post .entry-content .h3modoki {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .entry-content .wp-block-image {

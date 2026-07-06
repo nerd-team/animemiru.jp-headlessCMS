@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="/theme/css/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
         <link href="/theme/css/slick.css" rel="stylesheet" />
         <link href="/theme/css/slick-theme.css" rel="stylesheet" />
+        <link href="/theme/css/toc.css" rel="stylesheet" />
         <link href="/theme/css/custom.css" rel="stylesheet" />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon-32.png" rel="icon" type="image/png" sizes="32x32" />
