@@ -459,18 +459,38 @@ header .sitename a:hover {
   padding: 8px;
 }
 
-/* 記事本文見出し（旧WP affinger5 相当） */
+/* 記事本文見出し（旧WP affinger5 カスタマイズ相当） */
 .post .entry-content h2:not(.st-css-no2),
 .post .entry-content .h2modoki {
-  background: #f3f3f3;
-  color: #1a1a1a;
+  background: #f7b52c;
+  color: #fff;
   margin: 20px 0;
   padding: 10px 20px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border: none;
   font-size: 20px;
   line-height: 27px;
   font-weight: bold;
+}
+
+/* カテゴリラベル（一覧・スライダー・関連記事） */
+.catname,
+.st-catgroup.itiran-category .catname {
+  background: #f7b52c;
+  color: #fff;
+}
+
+.post .st-catgroup a,
+.post .st-catgroup.itiran-category a,
+.header-post-slider .st-catgroup.itiran-category a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.post .st-catgroup a:hover,
+.post .st-catgroup.itiran-category a:hover,
+.header-post-slider .st-catgroup.itiran-category a:hover {
+  color: #fff;
+  opacity: 0.9;
 }
 
 .post .entry-content h3:not(.st-css-no2):not(.rankh3):not(#reply-title),
