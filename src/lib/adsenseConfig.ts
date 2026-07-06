@@ -12,6 +12,13 @@ export const ADSENSE_INFEED_SLOT =
 export const ADSENSE_INFEED_LAYOUT_KEY =
   process.env.NEXT_PUBLIC_ADSENSE_INFEED_LAYOUT_KEY || '-hd+t-25-dm+wq'
 
+/** 記事詳細：本文下のディスプレイ広告（本番WPは2枠） */
+export const ADSENSE_ARTICLE_SLOT_1 =
+  process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT_1 || '2477922556'
+
+export const ADSENSE_ARTICLE_SLOT_2 =
+  process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT_2 || '2737228266'
+
 /** 何記事ごとにインフィード広告を挿入するか（本番WPは3記事ごと） */
 export const ADSENSE_INFEED_INTERVAL = Number(
   process.env.NEXT_PUBLIC_ADSENSE_INFEED_INTERVAL || 3,

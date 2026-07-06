@@ -57,6 +57,14 @@
   margin-top: 16px;
 }
 
+.adbox {
+  margin: 24px 0;
+}
+
+.article-ad-slot--second {
+  margin-top: 10px;
+}
+
 #gazou-wide {
   margin-bottom: 0;
 }

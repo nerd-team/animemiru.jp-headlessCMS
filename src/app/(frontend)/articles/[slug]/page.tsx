@@ -16,6 +16,7 @@ import { PayloadRedirects } from '@/components/PayloadRedirects'
 
 import { AnimemiruHeader } from '@/components/animemiru/Header'
 
+import { ArticleContentAds } from '@/components/animemiru/AdSenseUnit'
 import { ArticleSummary } from '@/components/animemiru/ArticleSummary'
 
 import { AuthorBox } from '@/components/animemiru/AuthorBox'
@@ -326,6 +327,10 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
                     </div>
 
                   </div>
+
+
+
+                  <ArticleContentAds />
 
 
 

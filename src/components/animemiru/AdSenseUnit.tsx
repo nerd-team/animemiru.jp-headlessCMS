@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 
 import {
   ADSENSE_CLIENT,
+  ADSENSE_ARTICLE_SLOT_1,
+  ADSENSE_ARTICLE_SLOT_2,
   ADSENSE_INFEED_INTERVAL,
   ADSENSE_INFEED_LAYOUT_KEY,
   ADSENSE_INFEED_SLOT,
@@ -74,6 +76,17 @@ export function SidebarAdUnit() {
       slot={ADSENSE_SIDEBAR_SLOT}
       wrapperClassName="ad sidebar-adsense"
     />
+  )
+}
+
+export function ArticleContentAds() {
+  if (!isAdSenseEnabled()) return null
+
+  return (
+    <div className="adbox">
+      <AdSenseUnit slot={ADSENSE_ARTICLE_SLOT_1} wrapperClassName="ad article-ad-slot" />
+      <AdSenseUnit slot={ADSENSE_ARTICLE_SLOT_2} wrapperClassName="ad article-ad-slot article-ad-slot--second" />
+    </div>
   )
 }
 
