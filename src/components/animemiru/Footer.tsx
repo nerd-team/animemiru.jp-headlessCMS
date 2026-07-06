@@ -35,7 +35,7 @@ const FOOTER_SNS = [
 
 export function AnimemiruFooter() {
   return (
-    <>
+    <div className="site-footer-block">
       <div className="footermenubox">
         <div className="footermenubox-in clearfix">
           <div className="footermenu">
@@ -97,6 +97,6 @@ export function AnimemiruFooter() {
       <p className="copyr">
         Copyright&copy; {SITE_NAME} , {new Date().getFullYear()} All Rights Reserved.
       </p>
-    </>
+    </div>
   )
 }

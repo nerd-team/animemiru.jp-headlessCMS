@@ -127,10 +127,114 @@ header .sitename a:hover {
 }
 
 .copyr {
-  text-align: center;
+  background: #c8870f;
+  color: #fff;
   font-size: 12px;
   margin: 0;
-  padding: 10px 0;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+/* フッター区切り・可読性 */
+.site-footer-block {
+  clear: both;
+  margin-top: 40px;
+}
+
+.footermenubox {
+  background: #fff;
+  border-top: 2px solid #e0e0e0;
+}
+
+.footermenubox-in {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 14px 15px;
+}
+
+.footermenu ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footermenu a {
+  color: #444;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.footermenu a:hover {
+  color: #b22222;
+  text-decoration: underline;
+}
+
+#footer {
+  color: #2a2a2a;
+  padding: 28px 15px 24px;
+}
+
+#footer .footerlogo {
+  color: #1a1a1a;
+}
+
+#footer .st-widgets-title span {
+  color: #333;
+  font-weight: bold;
+}
+
+#footer a {
+  color: #2a2a2a;
+}
+
+#footer a:hover {
+  color: #b22222;
+}
+
+#footer-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#footer-links a {
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-wbox {
+  margin-bottom: 16px;
+}
+
+@media print, screen and (min-width: 960px) {
+  .footer-wbox {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .footer-l {
+    flex: 1;
+  }
+
+  .footer-r {
+    flex-shrink: 0;
+  }
+
+  #footer-links ul {
+    justify-content: flex-end;
+  }
 }
 
 .tagcloud a {
@@ -148,31 +252,6 @@ header .sitename a:hover {
   background: #f7b52c;
   border-color: #f7b52c;
   color: #fff;
-}
-
-.footermenubox {
-  background: #fff;
-  border-top: 1px solid #eee;
-}
-
-.footermenubox-in {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 10px 0;
-}
-
-.footermenu ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footermenu a {
-  font-size: 13px;
 }
 
 .entry-content img {
