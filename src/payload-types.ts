@@ -250,9 +250,8 @@ export interface Category {
    */
   description?: string | null;
   /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   * URL用（/articles/category/{slug}）。WordPress移行時は元slugをそのまま保存します。
    */
-  generateSlug?: boolean | null;
   slug: string;
   parent?: (string | null) | Category;
   breadcrumbs?:
@@ -1353,7 +1352,6 @@ export interface MediaSelect<T extends boolean = true> {
 export interface CategoriesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
-  generateSlug?: T;
   slug?: T;
   parent?: T;
   breadcrumbs?:
