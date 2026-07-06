@@ -117,7 +117,7 @@ async function ensureCategory(
 ) {
   if (cache.has(wpCat.id)) return cache.get(wpCat.id)!
 
-  const slug = categorySlug(wpCat.id)
+  const slug = wpCat.slug || categorySlug(wpCat.id)
   const found = await payload.find({
     collection: 'categories',
     where: { slug: { equals: slug } },
