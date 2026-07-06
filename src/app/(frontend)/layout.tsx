@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import React from 'react'
 
 import { AnimemiruFooter } from '@/components/animemiru/Footer'
+import { AdSenseScript } from '@/components/animemiru/AdSenseScript'
 import { GoogleAnalytics } from '@/components/animemiru/GoogleAnalytics'
 import { OrganizationJsonLd } from '@/components/animemiru/JsonLd'
 import { ThemeScripts } from '@/components/animemiru/ThemeScripts'
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="home blog front-page">
         <GoogleAnalytics />
+        <AdSenseScript />
         <OrganizationJsonLd />
         <div id="st-ami">
           <div id="wrapper">
