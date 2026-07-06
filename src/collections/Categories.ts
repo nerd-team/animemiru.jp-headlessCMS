@@ -2,7 +2,6 @@ import type { CollectionConfig } from 'payload'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
-import { slugField } from 'payload'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -34,8 +33,16 @@ export const Categories: CollectionConfig = {
         description: 'SEO用。空の場合は自動生成されます。',
       },
     },
-    slugField({
-      position: undefined,
-    }),
+    {
+      name: 'slug',
+      type: 'text',
+      label: 'スラッグ',
+      required: true,
+      unique: true,
+      index: true,
+      admin: {
+        description: 'URL用（/articles/category/{slug}）。WordPress移行時は元slugをそのまま保存します。',
+      },
+    },
   ],
 }

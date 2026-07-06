@@ -110,6 +110,8 @@ function firstImageFromHtml(html: string) {
   return match?.[1]
 }
 
+const migrateContext = { disableRevalidate: true }
+
 async function ensureCategory(
   payload: Awaited<ReturnType<typeof getPayload>>,
   wpCat: WPCategory,
@@ -117,7 +119,7 @@ async function ensureCategory(
 ) {
   if (cache.has(wpCat.id)) return cache.get(wpCat.id)!
 
-  const slug = wpCat.slug || categorySlug(wpCat.id)
+  const slug = (wpCat.slug || '').trim() || categorySlug(wpCat.id)
   const found = await payload.find({
     collection: 'categories',
     where: { slug: { equals: slug } },
@@ -129,13 +131,39 @@ async function ensureCategory(
     return found.docs[0].id
   }
 
-  const created = await payload.create({
-    collection: 'categories',
-    data: { title: wpCat.name, slug },
-    overrideAccess: true,
-  })
-  cache.set(wpCat.id, created.id)
-  return created.id
+  try {
+    const created = await payload.create({
+      collection: 'categories',
+      data: { title: wpCat.name, slug },
+      overrideAccess: true,
+      context: migrateContext,
+    })
+    cache.set(wpCat.id, created.id)
+    return created.id
+  } catch (error) {
+    const fallbackSlug = categorySlug(wpCat.id)
+    if (fallbackSlug === slug) throw error
+
+    const fallback = await payload.find({
+      collection: 'categories',
+      where: { slug: { equals: fallbackSlug } },
+      limit: 1,
+    })
+
+    if (fallback.docs[0]) {
+      cache.set(wpCat.id, fallback.docs[0].id)
+      return fallback.docs[0].id
+    }
+
+    const created = await payload.create({
+      collection: 'categories',
+      data: { title: wpCat.name, slug: fallbackSlug },
+      overrideAccess: true,
+      context: migrateContext,
+    })
+    cache.set(wpCat.id, created.id)
+    return created.id
+  }
 }
 
 async function ensureMedia(
@@ -159,6 +187,7 @@ async function ensureMedia(
       filePath: localPath,
       data: { alt },
       overrideAccess: true,
+      context: migrateContext,
     })
     cache.set(url, created.id)
     return created.id
@@ -270,6 +299,7 @@ export async function migrateFromWordPress(options: WpMigrateOptions = {}): Prom
             collection: 'posts',
             draft: false,
             overrideAccess: true,
+            context: migrateContext,
             data: {
               title,
               slug: postSlug(wpPost.id),
