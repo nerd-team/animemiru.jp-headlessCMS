@@ -74,6 +74,82 @@
   margin: 0 auto;
 }
 
+/* slick-theme.css が FontAwesome 矢印を上書きするため、旧WP（affinger5）相当に戻す */
+.slick-prev,
+.slick-next,
+[dir='rtl'] .slick-prev,
+[dir='rtl'] .slick-next {
+  z-index: 9999;
+  width: 37px;
+  height: 37px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.slick-prev {
+  left: 0;
+}
+
+.slick-next {
+  right: 0;
+}
+
+[dir='rtl'] .slick-prev {
+  right: 0;
+  left: auto;
+}
+
+[dir='rtl'] .slick-next {
+  right: auto;
+  left: 0;
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.slick-prev:before,
+.slick-next:before,
+[dir='rtl'] .slick-prev:before,
+[dir='rtl'] .slick-next:before {
+  font-size: 12px;
+  font-family: FontAwesome;
+  color: #fff;
+  opacity: 1;
+}
+
+.slick-prev:before {
+  padding: 10px 15px 10px 11px;
+  content: '\f053';
+}
+
+.slick-next:before {
+  padding: 10px 11px 10px 15px;
+  content: '\f054';
+}
+
+[dir='rtl'] .slick-prev:before {
+  padding: 10px 11px 10px 15px;
+  content: '\f054';
+}
+
+[dir='rtl'] .slick-next:before {
+  padding: 10px 15px 10px 11px;
+  content: '\f053';
+}
+
+.header-post-slider .slick-prev,
+.header-post-slider .slick-next {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.header-post-slider .slick-prev:hover,
+.header-post-slider .slick-next:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
 @media print, screen and (min-width: 960px) {
   #gazou-wide {
     padding: 0 0 20px;
