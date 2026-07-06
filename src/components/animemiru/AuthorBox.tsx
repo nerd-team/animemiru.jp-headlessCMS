@@ -42,17 +42,6 @@ export function AuthorBox({ author }: Props) {
                   <Link href={`/articles/author/${profile.slug}`}>{profile.name}</Link>
                 </p>
                 <p className="author-description">{profile.description}</p>
-                {profile.sameAs.length > 0 && (
-                  <ul className="author-sns">
-                    {profile.sameAs.map((href) => (
-                      <li key={href}>
-                        <a href={href} rel="nofollow noopener noreferrer" target="_blank">
-                          {snsLabel(href)}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </dd>
             </dl>
           </div>
@@ -60,12 +49,4 @@ export function AuthorBox({ author }: Props) {
       </div>
     </>
   )
-}
-
-function snsLabel(href: string): string {
-  if (href.includes('twitter.com') || href.includes('x.com')) return 'Twitter'
-  if (href.includes('youtube.com')) return 'YouTube'
-  if (href.includes('instagram.com')) return 'Instagram'
-  if (href.includes('facebook.com')) return 'Facebook'
-  return 'SNS'
 }

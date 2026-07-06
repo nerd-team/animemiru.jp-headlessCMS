@@ -601,8 +601,49 @@ html {
 }
 
 .dyshorts-placeholder,
-.dyshorts-widget {
+.dyshorts-widget,
+.youtube-shorts-widget {
   margin: 20px 0;
+}
+
+.youtube-shorts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.youtube-short-item {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  max-height: 420px;
+  background: #000;
+}
+
+.youtube-short-item iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.youtube-shorts-more {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.youtube-shorts-more a {
+  color: #333;
+  text-decoration: none;
+}
+
+.youtube-shorts-more a:hover {
+  color: #c88700;
+  text-decoration: underline;
 }
 
 .sitemap-section {

@@ -70,17 +70,6 @@ export default async function AuthorPage({ params }: Args) {
                         <dd>
                           <p className="author-job">{author.jobTitle}</p>
                           <p className="author-description">{author.description}</p>
-                          {author.sameAs.length > 0 && (
-                            <ul className="author-sns">
-                              {author.sameAs.map((href) => (
-                                <li key={href}>
-                                  <a href={href} rel="nofollow noopener noreferrer" target="_blank">
-                                    {href.includes('twitter') ? 'Twitter' : 'SNS'}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
                         </dd>
                       </dl>
                     </div>

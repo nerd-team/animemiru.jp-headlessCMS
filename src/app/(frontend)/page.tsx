@@ -7,7 +7,7 @@ import { WebSiteJsonLd } from '@/components/animemiru/JsonLd'
 import { AnimemiruHomeHeader } from '@/components/animemiru/HomeHeader'
 import { AnimemiruSidebar } from '@/components/animemiru/Sidebar'
 import { SnsTop } from '@/components/animemiru/SnsTop'
-import { DyshortsWidget } from '@/components/animemiru/SidebarWidgets'
+import { YouTubeShortsWidget } from '@/components/animemiru/SidebarWidgets'
 import { Pagination } from '@/components/Pagination'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
 import { SITE_DESCRIPTION, SITE_TAGLINE } from '@/lib/siteConfig'
@@ -74,7 +74,7 @@ export default async function HomePage({
                   )}
                 </aside>
 
-                <DyshortsWidget />
+                <YouTubeShortsWidget />
 
                 <SnsTop />
               </article>

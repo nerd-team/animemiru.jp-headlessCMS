@@ -17,9 +17,8 @@ export const ORGANIZATION = {
   logo: DEFAULT_OG_IMAGE,
   sameAs: [
     'https://twitter.com/animemiru_media',
-    'https://www.youtube.com/channel/UCCGMUAzlpKk9LyJxv7dUSWQ',
+    'https://www.youtube.com/@-animemiru2785/shorts',
     'https://www.instagram.com/animemiru/',
     'https://facebook.com/animemiru',
-    'https://www.nicovideo.jp/user/animemiru',
   ],
 } as const

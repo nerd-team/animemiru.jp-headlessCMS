@@ -7,14 +7,9 @@ const SITE_TAGLINE = '\u30a2\u30cb\u30e1\u597d\u304d\u306e\u30a8\u30f3\u30bf\u30
 
 const FOOTER_SNS = [
   {
-    href: 'https://www.youtube.com/channel/UCCGMUAzlpKk9LyJxv7dUSWQ',
+    href: 'https://www.youtube.com/@-animemiru2785/shorts',
     label: 'YouTube',
     className: 'youtube',
-  },
-  {
-    href: 'https://www.nicovideo.jp/user/animemiru',
-    label: 'ニコニコ動画',
-    className: 'niconico',
   },
   {
     href: 'https://twitter.com/animemiru_media',

@@ -6,6 +6,8 @@ type Banner = {
 
 import { SidebarAdUnit } from '@/components/animemiru/AdSenseUnit'
 
+export { YouTubeShortsWidget } from '@/components/animemiru/YouTubeShortsWidget'
+
 const SIDEBAR_BANNERS: Banner[] = [
   {
     href: 'https://maqe.website/?utm_source=animemiru&utm_medium=banner&utm_campaign=muryokaiinn',
@@ -43,25 +45,4 @@ export function SidebarBanners() {
 
 export function SidebarAdSlot() {
   return <SidebarAdUnit />
-}
-
-export function DyshortsWidget() {
-  const dyshortsId = process.env.NEXT_PUBLIC_DYSHORTS_ID
-
-  if (!dyshortsId) {
-    return (
-      <div className="ad dyshorts-placeholder">
-        <p className="st-widgets-title">
-          <span>ショート動画</span>
-        </p>
-        <div className="sidebar-ad-box">dyshorts</div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="ad dyshorts-widget">
-      <div data-dyshorts-id={dyshortsId} id="dyshorts-widget" />
-    </div>
-  )
 }
