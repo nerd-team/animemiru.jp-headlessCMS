@@ -150,6 +150,85 @@
   background: rgba(0, 0, 0, 0.75);
 }
 
+/* ページネーション */
+.st-pagelink {
+  display: block;
+  margin: 32px 0 24px;
+  padding: 24px 0 0;
+  border-top: 1px solid #e0e0e0;
+  width: 100%;
+}
+
+.st-pagelink-summary {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+}
+
+.st-pagelink-in {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.st-pagelink .page-numbers,
+.st-pagelink .previouspostslink,
+.st-pagelink .nextpostslink {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  opacity: 1;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.st-pagelink a.page-numbers:hover,
+.st-pagelink .previouspostslink:hover,
+.st-pagelink .nextpostslink:hover {
+  background: #f7b52c;
+  border-color: #e5a318;
+  color: #fff;
+  opacity: 1;
+}
+
+.st-pagelink .page-numbers.current {
+  background: #f7b52c;
+  border-color: #e5a318;
+  color: #fff;
+  font-weight: 700;
+  opacity: 1;
+}
+
+.st-pagelink .page-numbers.dots {
+  min-width: auto;
+  padding: 8px 6px;
+  border: none;
+  background: transparent;
+  color: #999;
+}
+
+.st-pagelink .previouspostslink,
+.st-pagelink .nextpostslink {
+  min-width: auto;
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
 @media print, screen and (min-width: 960px) {
   #gazou-wide {
     padding: 0 0 20px;
