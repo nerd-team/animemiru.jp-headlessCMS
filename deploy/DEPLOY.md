@@ -198,7 +198,10 @@ Internet → nginx (:443) → app (:3000, 内部のみ) → mongo (:27017, local
 # 1. コード更新
 git pull origin main
 
-# 2. 旧サーバーから同期（VPS 上で 10〜60分、容量により変動）
+# 2. jq（初回のみ）
+sudo apt-get install -y jq
+
+# 3. 旧サーバーから同期（メディア数により 30分〜数時間）
 bash deploy/migrate-wp-content.sh
 
 # 旧サーバーに SSH できる場合（推奨・途中再開可）
