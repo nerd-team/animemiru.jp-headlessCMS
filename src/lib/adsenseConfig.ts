@@ -19,6 +19,11 @@ export const ADSENSE_ARTICLE_SLOT_1 =
 export const ADSENSE_ARTICLE_SLOT_2 =
   process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT_2 || '2737228266'
 
+/** 記事本文内の見出し前広告の上限（2・4・6番目の h2 手前に配置） */
+export const ADSENSE_ARTICLE_INLINE_MAX = Number(
+  process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_INLINE_MAX || 3,
+)
+
 /** 何記事ごとにインフィード広告を挿入するか（本番WPは3記事ごと） */
 export const ADSENSE_INFEED_INTERVAL = Number(
   process.env.NEXT_PUBLIC_ADSENSE_INFEED_INTERVAL || 3,

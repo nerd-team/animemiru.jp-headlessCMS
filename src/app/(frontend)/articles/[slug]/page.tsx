@@ -19,6 +19,7 @@ import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { AnimemiruHeader } from '@/components/animemiru/Header'
 
 import { ArticleContentAds } from '@/components/animemiru/AdSenseUnit'
+import { ArticleContent } from '@/components/animemiru/ArticleContent'
 import { ArticleSummary } from '@/components/animemiru/ArticleSummary'
 
 import { AuthorBox } from '@/components/animemiru/AuthorBox'
@@ -52,6 +53,9 @@ import { getPostCanonicalUrl, getPostPath } from '@/utilities/getPostCanonicalUr
 import { getCategoryHref } from '@/utilities/categorySlug'
 
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
+
+import { ADSENSE_ARTICLE_INLINE_MAX, isAdSenseEnabled } from '@/lib/adsenseConfig'
+import { splitArticleContentForAds } from '@/lib/splitArticleContentForAds'
 
 import { getServerSideURL } from '@/utilities/getURL'
 import { shouldSkipBuildStaticGeneration } from '@/utilities/shouldSkipBuildStaticGeneration'
@@ -167,6 +171,13 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 
   const modifiedAt = post.modifiedAt || post.updatedAt
   const authorProfile = getAuthorProfileFromPost(post)
+
+  const articleContentSegments = post.contentHtml
+    ? splitArticleContentForAds(
+        post.contentHtml,
+        isAdSenseEnabled() ? ADSENSE_ARTICLE_INLINE_MAX : 0,
+      )
+    : null
 
   const breadcrumbUi = [
 
@@ -322,7 +333,11 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 
                       <div className="entry-content">
 
-                        {post.contentHtml ? (
+                        {articleContentSegments ? (
+
+                          <ArticleContent segments={articleContentSegments} />
+
+                        ) : post.contentHtml ? (
 
                           <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
 

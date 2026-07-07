@@ -61,6 +61,12 @@
   margin: 24px 0;
 }
 
+/* 見出し前の挿入広告（旧 AFFINGER .st-h-ad 相当） */
+.st-h-ad.article-inline-ad {
+  margin: 20px 0;
+  text-align: center;
+}
+
 .article-ad-slot--second {
   margin-top: 10px;
 }
