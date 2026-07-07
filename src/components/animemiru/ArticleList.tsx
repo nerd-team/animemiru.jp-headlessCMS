@@ -1,3 +1,5 @@
+'use client'
+
 import type { Post } from '@/payload-types'
 import Link from 'next/link'
 import { Fragment } from 'react'

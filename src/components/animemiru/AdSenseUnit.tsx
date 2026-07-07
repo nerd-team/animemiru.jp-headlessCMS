@@ -50,7 +50,7 @@ export function AdSenseUnit({
         data-ad-client={ADSENSE_CLIENT}
         data-ad-format={format}
         data-ad-slot={slot}
-        data-ad-layout-key={layoutKey}
+        {...(format === 'fluid' && layoutKey ? { 'data-ad-layout-key': layoutKey } : {})}
         data-full-width-responsive={format === 'auto' ? 'true' : undefined}
         style={{ display: 'block' }}
       />
