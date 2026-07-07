@@ -1,6 +1,7 @@
 /**
  * 画像URLを同一オリジン相対パスに揃える。
- * animemiru.jp/wp-content/... は /wp-content/... にして nginx プロキシ経由で配信する。
+ * animemiru.jp/wp-content/... は /wp-content/... にして nginx から配信する。
+ * 実体は data/wp-content/（移行スクリプトで同期）または旧サーバーフォールバック。
  */
 export function normalizeMediaUrl(url: string | null | undefined): string | null {
   if (!url) return null

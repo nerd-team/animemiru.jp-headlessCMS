@@ -18,6 +18,7 @@ services:
         NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT_1: ${NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT_1:-}
         NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT_2: ${NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT_2:-}
         NEXT_PUBLIC_DYSHORTS_ID: ${NEXT_PUBLIC_DYSHORTS_ID:-}
+        NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${NEXT_PUBLIC_RECAPTCHA_SITE_KEY:-}
     restart: unless-stopped
     expose:
       - '3000'
@@ -54,6 +55,7 @@ services:
     volumes:
       - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./deploy/certs:/etc/nginx/certs:ro
+      - ./data/wp-content:/var/www/wp-content:ro
       - certbot_www:/var/www/certbot:ro
     depends_on:
       - app

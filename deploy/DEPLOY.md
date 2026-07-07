@@ -188,7 +188,32 @@ Internet → nginx (:443) → app (:3000, 内部のみ) → mongo (:27017, local
 | `/admin` が 500 | `docker compose down && rm -rf .next && docker compose up -d --build` |
 | ビルド失敗 | メモリ不足 → VPS のスワップ追加 or スペックアップ |
 | 移行が止まる | `docker compose logs tools` を確認。`--limit 10` で再テスト |
-| 画像が表示されない | `media_uploads` ボリュームと `NEXT_PUBLIC_SERVER_URL` を確認 |
+| 画像が表示されない | `bash deploy/migrate-wp-content.sh` で同期後 `docker compose restart nginx`。`NEXT_PUBLIC_SERVER_URL` も確認 |
+
+### 画像（wp-content）の移行
+
+記事本文・サムネは `/wp-content/uploads/` にあります。新 VPS へコピーします。
+
+```bash
+# 1. コード更新
+git pull origin main
+
+# 2. 旧サーバーから同期（VPS 上で 10〜60分、容量により変動）
+bash deploy/migrate-wp-content.sh
+
+# 旧サーバーに SSH できる場合（推奨・途中再開可）
+# WP_SSH=ユーザー@49.212.243.171 WP_REMOTE_PATH=/var/www/html/wp-content bash deploy/migrate-wp-content.sh
+
+# 3. nginx 反映
+docker compose up -d
+docker compose restart nginx
+
+# 4. 確認
+curl -sI --resolve animemiru.jp:443:127.0.0.1 \
+  https://animemiru.jp/wp-content/uploads/2026/03/nato-nato-00.jpg | head -1
+```
+
+`data/wp-content/` は Git に含めません（`.gitignore`）。バックアップは `deploy/backup.sh` または `rsync` で別途。
 
 ---
 
