@@ -11,12 +11,12 @@ export { YouTubeShortsWidget } from '@/components/animemiru/YouTubeShortsWidget'
 const SIDEBAR_BANNERS: Banner[] = [
   {
     href: 'https://maqe.website/?utm_source=animemiru&utm_medium=banner&utm_campaign=muryokaiinn',
-    imageUrl: 'https://animemiru.jp/wp-content/uploads/2025/03/banner-1.png',
+    imageUrl: '/theme/images/banners/maqe.png',
     alt: 'MAQE',
   },
   {
     href: 'https://seisaku-daikou.maqe.site/?utm_source=animemiru&utm_medium=banner&utm_campaign=seisaku-daiko',
-    imageUrl: 'https://animemiru.jp/wp-content/uploads/2025/03/1114MAQE02.jpg',
+    imageUrl: '/theme/images/banners/seisaku-daikou.jpg',
     alt: '制作代行',
   },
 ]
