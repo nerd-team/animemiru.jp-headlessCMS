@@ -495,13 +495,13 @@ header .sitename a:hover {
 
 .post .entry-content h3:not(.st-css-no2):not(.rankh3):not(#reply-title),
 .post .entry-content .h3modoki {
-  background: #f3f3f3;
-  color: #1a1a1a;
-  margin: 20px 0;
-  padding: 10px 20px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  font-size: 19px;
+  background: transparent;
+  color: #333;
+  margin: 24px 0 16px;
+  padding: 0 0 10px;
+  border: none;
+  border-bottom: 3px solid #f7b52c;
+  font-size: 18px;
   line-height: 27px;
   font-weight: bold;
 }
@@ -531,8 +531,8 @@ header .sitename a:hover {
 
   .post .entry-content h3:not(.st-css-no2):not(.rankh3):not(#reply-title),
   .post .entry-content .h3modoki {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 19px;
+    line-height: 28px;
   }
 }
 
@@ -545,8 +545,8 @@ header .sitename a:hover {
 
   .post .entry-content h3:not(.st-css-no2):not(.rankh3):not(#reply-title),
   .post .entry-content .h3modoki {
-    font-size: 22px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 30px;
   }
 }
 
@@ -672,19 +672,29 @@ html {
 }
 
 .youtube-shorts-more {
-  margin-top: 12px;
+  margin-top: 16px;
   text-align: center;
-  font-size: 13px;
 }
 
-.youtube-shorts-more a {
-  color: #333;
+.youtube-shorts-more-btn {
+  display: inline-block;
+  padding: 10px 32px;
+  background: #f7b52c;
+  border: 1px solid #e5a318;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
   text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.youtube-shorts-more a:hover {
-  color: #c88700;
-  text-decoration: underline;
+.youtube-shorts-more-btn:hover {
+  background: #e5a318;
+  border-color: #d49516;
+  color: #fff;
+  text-decoration: none;
 }
 
 .sitemap-section {
@@ -766,6 +776,18 @@ html {
   cursor: pointer;
   font-size: 16px;
   padding: 10px 24px;
+}
+
+.contact-form-recaptcha-notice {
+  color: #888;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 0.75em;
+}
+
+.contact-form-recaptcha-notice a {
+  color: #888;
+  text-decoration: underline;
 }
 
 .contact-form-message {
@@ -878,4 +900,34 @@ html {
 
 .author-back {
   margin-top: 24px;
+}
+
+/* フッター下の余白スクロール防止 */
+html,
+body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+#st-ami,
+#wrapper,
+#wrapper-in {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+body.fixed-footer #wrapper {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.site-footer-block {
+  margin-bottom: 0;
+}
+
+#content-w::after {
+  clear: both;
+  content: '';
+  display: table;
 }
