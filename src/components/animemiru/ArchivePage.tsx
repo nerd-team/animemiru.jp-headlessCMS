@@ -14,6 +14,8 @@ import { SnsTop } from '@/components/animemiru/SnsTop'
 
 import { Pagination } from '@/components/Pagination'
 
+import { isAdSenseEnabled } from '@/lib/adsenseConfig'
+
 
 
 type Props = {
@@ -108,7 +110,7 @@ export function ArchivePage({
 
                 <aside>
 
-                  <ArticleList posts={posts} />
+                  <ArticleList posts={posts} showInFeedAds={isAdSenseEnabled()} />
 
                   {totalPages > 1 && (
 

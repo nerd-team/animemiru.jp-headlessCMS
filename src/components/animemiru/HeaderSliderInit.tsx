@@ -35,6 +35,12 @@ export function HeaderSliderInit() {
 
     async function initSlider() {
       try {
+        ;(window as typeof window & { ST?: Record<string, string> }).ST = {
+          is_mobile: '0',
+          expand_accordion_menu: '0',
+          sidemenu_accordion: '0',
+        }
+
         await loadScript('https://code.jquery.com/jquery-3.7.1.min.js')
         await loadScript('/theme/js/slick.js')
         await loadScript('/theme/js/base.js')

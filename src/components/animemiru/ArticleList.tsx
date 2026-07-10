@@ -1,28 +1,30 @@
-'use client'
-
 import type { Post } from '@/payload-types'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
-import { ADSENSE_INFEED_INTERVAL, InFeedAdUnit } from '@/components/animemiru/AdSenseUnit'
-import { isAdSenseEnabled } from '@/lib/adsenseConfig'
+import { ADSENSE_INFEED_INTERVAL } from '@/lib/adsenseConfig'
 import { formatDateTime } from '@/utilities/formatDateTime'
 import { getPostHref } from '@/utilities/getPostHref'
 import { getCategoryHref } from '@/utilities/categorySlug'
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
 import { truncateExcerpt } from '@/utilities/truncateExcerpt'
 
+const InFeedAdUnit = dynamic(
+  () => import('@/components/animemiru/AdSenseUnit').then((mod) => mod.InFeedAdUnit),
+  { ssr: false },
+)
+
 type Props = {
   posts: Post[]
+  showInFeedAds?: boolean
 }
 
 function getThumbUrl(post: Post) {
   return getPostImageUrl(post)
 }
 
-export function ArticleList({ posts }: Props) {
-  const showInFeedAds = isAdSenseEnabled()
-
+export function ArticleList({ posts, showInFeedAds = false }: Props) {
   return (
     <div className="kanren">
       {posts.map((post, index) => {

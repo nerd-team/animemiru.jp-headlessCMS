@@ -9,6 +9,7 @@ import { AnimemiruSidebar } from '@/components/animemiru/Sidebar'
 import { SnsTop } from '@/components/animemiru/SnsTop'
 import { YouTubeShortsWidget } from '@/components/animemiru/SidebarWidgets'
 import { Pagination } from '@/components/Pagination'
+import { isAdSenseEnabled } from '@/lib/adsenseConfig'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
 import { SITE_DESCRIPTION, SITE_TAGLINE } from '@/lib/siteConfig'
 import { buildPaginatedMetadata, parsePageParam } from '@/utilities/paginationMeta'
@@ -77,7 +78,7 @@ export default async function HomePage({
                 <div className="home-post post" />
 
                 <aside>
-                  <ArticleList posts={postsResult.docs} />
+                  <ArticleList posts={postsResult.docs} showInFeedAds={isAdSenseEnabled()} />
                   {postsResult.totalPages > 1 && (
                     <Pagination page={page} totalPages={postsResult.totalPages} basePath="/" />
                   )}

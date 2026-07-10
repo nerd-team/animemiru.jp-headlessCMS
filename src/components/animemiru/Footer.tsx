@@ -17,7 +17,7 @@ const FOOTER_SNS = [
     className: 'twitter',
   },
   {
-    href: 'http://facebook.com/animemiru',
+    href: 'https://facebook.com/animemiru',
     label: 'Facebook',
     className: 'facebook',
   },

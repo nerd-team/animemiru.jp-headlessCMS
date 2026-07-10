@@ -27,7 +27,12 @@ export async function YouTubeShortsWidget() {
         ))}
       </div>
       <p className="youtube-shorts-more">
-        <Link href={YOUTUBE_SHORTS_CHANNEL_URL} rel="noopener noreferrer" target="_blank">
+        <Link
+          className="youtube-shorts-more-btn"
+          href={YOUTUBE_SHORTS_CHANNEL_URL}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           もっと見る
         </Link>
       </p>

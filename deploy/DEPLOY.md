@@ -194,6 +194,32 @@ Internet → nginx (:443) → app (:3000, 内部のみ) → mongo (:27017, local
 
 記事本文・サムネは `/wp-content/uploads/` にあります。新 VPS へコピーします。
 
+> **DNS 切替後は HTTP/API 経由の旧サーバー取得がほぼ使えません。**  
+> 旧サーバーは `Host: animemiru.jp` へのリクエストを新サイトへ 301 リダイレクトするため、  
+> 未移行の画像は **FTP / SSH rsync で旧サーバーから直接コピー** してください。
+
+#### 方法A: FTP（DNS 切替後の推奨）
+
+1. **FTP クライアント**（FileZilla 等）で **旧サーバー** に接続  
+   - ホスト: 旧 VPS の IP またはさくらの FTP ホスト（`animemiru.jp` の DNS ではなく FTP 用）
+2. リモートの `wp-content/uploads/` 全体を PC にダウンロード
+3. PC から新 VPS へ転送:
+
+```powershell
+# PowerShell（例）
+scp -r "C:\path\to\uploads" ubuntu@153.120.2.184:~/uploads-backup
+```
+
+4. VPS 上で取り込み:
+
+```bash
+cd ~/animemiru.jp-headlessCMS
+bash deploy/import-local-wp-content.sh ~/uploads-backup
+docker compose restart nginx
+```
+
+#### 方法B: API 経由（DNS 切替前のみ有効）
+
 ```bash
 # 1. コード更新
 git pull origin main
@@ -217,6 +243,15 @@ curl -sI --resolve animemiru.jp:443:127.0.0.1 \
 ```
 
 `data/wp-content/` は Git に含めません（`.gitignore`）。バックアップは `deploy/backup.sh` または `rsync` で別途。
+
+#### 本文 HTML の修復（img タグ）
+
+コード更新後、壊れた img タグと URL を一括修復:
+
+```bash
+curl -H "Authorization: Bearer <CRON_SECRET>" \
+  https://animemiru.jp/next/enrich-content
+```
 
 ---
 
