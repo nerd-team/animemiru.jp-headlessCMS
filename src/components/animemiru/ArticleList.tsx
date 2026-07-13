@@ -1,19 +1,14 @@
 import type { Post } from '@/payload-types'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+import { InFeedAdUnit } from '@/components/animemiru/AdSenseUnit'
 import { ADSENSE_INFEED_INTERVAL } from '@/lib/adsenseConfig'
 import { formatDateTime } from '@/utilities/formatDateTime'
 import { getPostHref } from '@/utilities/getPostHref'
 import { getCategoryHref } from '@/utilities/categorySlug'
 import { getPostImageUrl } from '@/utilities/getPostImageUrl'
 import { truncateExcerpt } from '@/utilities/truncateExcerpt'
-
-const InFeedAdUnit = dynamic(
-  () => import('@/components/animemiru/AdSenseUnit').then((mod) => mod.InFeedAdUnit),
-  { ssr: false },
-)
 
 type Props = {
   posts: Post[]
@@ -75,7 +70,7 @@ export function ArticleList({ posts, showInFeedAds = false }: Props) {
                 )}
               </dd>
             </dl>
-            {insertInFeedAd && <InFeedAdUnit />}
+            {insertInFeedAd ? <InFeedAdUnit /> : null}
           </Fragment>
         )
       })}

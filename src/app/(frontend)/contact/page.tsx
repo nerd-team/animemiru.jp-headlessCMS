@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { ContactForm } from '@/components/animemiru/ContactForm'
 import { StaticPageLayout } from '@/components/animemiru/StaticPageLayout'
 import { fetchPopularPosts } from '@/lib/fetchPopularPosts'
-import { fetchWpPageHtml } from '@/lib/fetchWpPageHtml'
 import { generateStaticPageMeta } from '@/utilities/generateStaticPageMeta'
 
 export const metadata: Metadata = generateStaticPageMeta(
@@ -13,10 +12,7 @@ export const metadata: Metadata = generateStaticPageMeta(
 )
 
 export default async function ContactPage() {
-  const [page, popularPosts] = await Promise.all([
-    fetchWpPageHtml('contact'),
-    fetchPopularPosts(),
-  ])
+  const popularPosts = await fetchPopularPosts()
 
   return (
     <StaticPageLayout
@@ -25,16 +21,9 @@ export default async function ContactPage() {
       popularPosts={popularPosts}
       title="お問い合わせ"
     >
-      {page?.html && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: page.html.split('<form')[0],
-          }}
-        />
-      )}
-      {!page?.html && (
-        <p>アニメミルに関するお問い合わせ、広告掲載等のご相談は以下のお問い合わせフォームからお願いします。</p>
-      )}
+      <p>
+        アニメミルに関するお問い合わせ、広告掲載等のご相談は以下のお問い合わせフォームからお願いします。
+      </p>
       <h2>お問い合わせ</h2>
       <ContactForm />
     </StaticPageLayout>
