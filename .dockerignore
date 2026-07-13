@@ -8,6 +8,9 @@ npm-debug.log
 !.env.example
 deploy/certs/*.pem
 public/media
+# WP 画像は nginx の volume マウント専用。ビルドに入れると数GB〜十数GBになる
+data
+backups
 tmp-*
 *.md
 !README.md
@@ -15,3 +18,5 @@ playwright-report
 test-results
 coverage
 .cursor
+*.html
+.tsbuildinfo
