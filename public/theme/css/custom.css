@@ -760,6 +760,30 @@ html {
   margin-top: 1em;
 }
 
+.contact-form--google {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-top: 3px solid #f7b52c;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0;
+}
+
+.contact-form-google-iframe {
+  border: 0;
+  display: block;
+  height: 780px;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .contact-form-google-iframe {
+    height: 860px;
+  }
+}
+
 .contact-form label {
   display: block;
   font-weight: bold;
